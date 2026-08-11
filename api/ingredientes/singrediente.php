@@ -4,14 +4,14 @@ $pdo = Conexao::conectar();
 $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $sql = "
 select 
-catid as cid, 
-catnome as cnome, 
-catativo as cativo 
-from categorias;
+ingid as iid,
+ingnome as inome,
+format(ingvalorunitario,2) as ivalor
+from ingredientes;
 ";
 $prp = $pdo->prepare($sql);
 $prp->execute();
 $data = $prp->fetchall(PDO::FETCH_ASSOC);
 echo json_encode($data);
 Conexao::desconectar();
-//http://localhost/Projetos_ETEC_PWEB-III_Div1/api/categorias/scategoria.php
+//http://localhost/Projetos_ETEC_PWEB-III_Div1/api/ingredientes/singrediente.php
